@@ -1,0 +1,18 @@
+{
+  "name": "programacion-asincrona",
+  "version": "1.0.0",
+  "description": "Ejemplos de programación asincrona",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "asincrono",
+    "programación"
+  ],
+  "author": "Ignacio Garcia Reyna",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
