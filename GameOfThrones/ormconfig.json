@@ -1,0 +1,13 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "WalterWhite",
+  "password": "Codellege.",
+  "database": "gameofthronesquotes",
+  "synchronize": false,
+  "logging": true,
+  "entities": ["dis/entity/**/*.ts"],
+  "migrations": ["dist/migration/*.ts"],
+  "subscribers": ["src/subscriber/**/*.ts"]
+}
