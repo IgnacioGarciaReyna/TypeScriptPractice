@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Connection, createConnection } from "typeorm";
-import { Phrases } from "./entity/User";
+import { Phrases } from "./entity/Phrases";
 
 createConnection({
   type: "mysql",
