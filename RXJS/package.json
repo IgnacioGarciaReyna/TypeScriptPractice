@@ -1,0 +1,24 @@
+{
+  "name": "practicascodelgf",
+  "version": "1.0.0",
+  "description": "manejo de peticiones asincronas",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open --port=8081"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^7.3.0",
+    "webpack": "^5.53.0",
+    "webpack-dev-server": "^4.2.1"
+  },
+  "devDependencies": {
+    "css-loader": "^6.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "style-loader": "^3.3.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.3",
+    "webpack-cli": "^4.8.0"
+  }
+}
