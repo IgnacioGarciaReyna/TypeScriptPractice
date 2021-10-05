@@ -11,4 +11,6 @@ import "./../index.css";
 // import "./operadores/01-map-pluck-mapTo";
 // import "./operadores/02-filter";
 // import "./operadores/03-tap";
-import "./operadores/04-map-lab";
+// import "./operadores/04-map-lab";
+// import "./operadores/05-take";
+import "./operadores/06-first";
