@@ -1,6 +1,12 @@
 import { debounceTime, from, fromEvent, map, pluck } from "rxjs";
 
-let heroesLists: { name: string; type: string }[] = [
+enum filtrosType {
+  Heroe = "Heroe",
+  Villano = "Villano",
+  Todos = "Todos",
+}
+
+let heroesListsOriginal: { name: string; type: string }[] = [
   {
     name: "Batman",
     type: "Heroe",
@@ -57,42 +63,71 @@ select.id = "SelectType";
 
 const option1 = document.createElement("option");
 const option2 = document.createElement("option");
+const option3 = document.createElement("option");
 
 option2.innerText = "Villano";
-option2.setAttribute("value", "villano");
+option2.setAttribute("value", filtrosType.Villano);
 
 option1.innerText = "Heroe";
-option1.setAttribute("value", "heroe");
+option1.setAttribute("value", filtrosType.Heroe);
+
+option3.innerText = "Todos";
+option1.setAttribute("value", filtrosType.Todos);
 
 select.appendChild(option1);
 select.appendChild(option2);
+select.appendChild(option3);
 
 divPrincipal?.appendChild(input);
 divPrincipal?.appendChild(select);
 
 body?.appendChild(divPrincipal);
 
+body?.appendChild(listaPrincipal);
+
 //Función
-const createListElements: Function = () => {
-  heroesLists.forEach((personaje) => {
+const createListElements = (_heroesList: any) => {
+  _heroesList.forEach((personaje: any) => {
     let li = document.createElement("li");
     li.innerText = personaje.name;
     listaPrincipal.appendChild(li);
   });
-  body?.appendChild(listaPrincipal);
 };
-
-createListElements();
+createListElements(heroesListsOriginal);
 
 const inputSearch$ = fromEvent(input, "keyup").pipe(
   debounceTime(1500),
   pluck("target", "value"),
-  map((termino) =>{
+  /////////////////////////
+  map((termino) => {
+    //Encontramos todos los terminos segun lo que pasa pluck
+    let filtro = select.value;
+    let newHeoresArray: any[] = [];
+    if (filtro == filtrosType.Todos) {
+      newHeoresArray = heroesListsOriginal.filter((personaje) =>
+        personaje.name.toLowerCase().includes((<string>termino).toLowerCase())
+      );
+    } else {
+      newHeoresArray = heroesListsOriginal.filter(
+        (personaje) =>
+          personaje.name
+            .toLowerCase()
+            .includes((<string>termino).toLowerCase()) &&
+          personaje.type == filtro
+      );
+    }
 
-    heroesLists.filter(personaje => personaje.name.toLowerCase().includes((termino as string).toLowerCase()))
-
+    //Vamos eliminando
+    while (listaPrincipal.hasChildNodes()) {
+      listaPrincipal.childNodes[0].remove();
+    }
+    //Creamos la nueva lista
+    createListElements(newHeoresArray);
   })
+  ///////////////////////
 );
+
+const ChangeFilter = fromEvent(select, "change");
 
 inputSearch$.subscribe({
   next: (value) => {
