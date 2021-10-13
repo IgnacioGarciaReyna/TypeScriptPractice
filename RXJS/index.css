@@ -26,6 +26,20 @@ button {
   border-radius: 10px;
 }
 
+select {
+  display: inline-block;
+  width: 10%;
+  cursor: pointer;
+  padding: 0.5em;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: #3d9dea;
+  color: #ffffff;
+  margin: 1em;
+  position: relative;
+}
+
 button,
 video {
   margin-right: 10px;
@@ -83,4 +97,12 @@ ol {
   to {
     opacity: 1;
   }
+}
+
+.number{
+  font-size: 70px;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
 }

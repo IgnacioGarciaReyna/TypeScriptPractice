@@ -13,4 +13,9 @@ import "./../index.css";
 // import "./operadores/03-tap";
 // import "./operadores/04-map-lab";
 // import "./operadores/05-take";
-import "./operadores/06-first";
+// import "./operadores/06-first";
+// import "./operadores/07-takeWhile";
+// import "./operadores/08-takeUntil";
+// import "./operadores/09-distinct";
+
+import "./operadores-tiempo/02-practica2";
