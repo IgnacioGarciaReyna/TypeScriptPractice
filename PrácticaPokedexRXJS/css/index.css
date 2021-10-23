@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box !important;
+}
+
+.card {
+    min-width: 32%;
+    max-width: 32%;
+    margin: 3px 5px 0px 0px;
+    border: 1px solid #ccc !important;
+}
+
+.card-title{
+    text-align: center;
+    text-transform: capitalize;
+}
