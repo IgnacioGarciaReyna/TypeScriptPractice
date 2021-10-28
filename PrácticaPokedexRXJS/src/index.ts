@@ -2,7 +2,7 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./../css/index.css";
 
-import { from, fromEvent, mergeMap, pluck } from "rxjs";
+import { debounceTime, filter, from, fromEvent, map, mergeAll, mergeMap, pluck, tap } from "rxjs";
 import { ajax } from "rxjs/ajax";
 
 
@@ -47,6 +47,7 @@ interface Pokemon {
 
 // HTML
 const cardGroup: any = document.getElementById("cardGroup");
+const pagina : any = document.getElementById("pagina");
 
 const mostrarPokemons = (pokemons: Pokemon) => {
   const div = document.createElement("div");
@@ -68,6 +69,9 @@ const mostrarPokemons = (pokemons: Pokemon) => {
   divSmall.append(h5);
   div.append(img, divSmall);
   cardGroup?.append(div);
+
+  
+  pagina.innerText = `Pokemons del ${indicePokemon} al ${indicePokemon + 20}`;
 };
 
 
@@ -92,3 +96,24 @@ const ejecutarAjax = () =>
     });
 
 ejecutarAjax();
+
+
+//Busqueda
+const inputSearch :any = document.getElementById("inputSearch");
+const input$ = fromEvent<KeyboardEvent>(inputSearch, "keyup")
+
+input$
+  .pipe(
+    debounceTime<KeyboardEvent>(500),
+    tap(console.log),
+    // pluck("target", "value"),
+    // filter((valor) => valor !== ""),
+    // map((valor) =>
+    //   ajax.getJSON(`https://api.github.com/search/users?q=${valor}`)
+    // ),
+    // mergeAll(),
+    // pluck("items")
+  )
+  .subscribe({
+    // next: (valor : any) => mostrarPokemons(valor),
+  });
